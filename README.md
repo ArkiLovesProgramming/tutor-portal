@@ -2,6 +2,11 @@
 
 A modern tutor portal frontend for Champ Code Academy, built with React, TypeScript, and Tailwind CSS.
 
+## Pages Display
+<img width="1917" height="1239" alt="image" src="https://github.com/user-attachments/assets/fa78c901-42b2-4dd7-804f-70436c126042" />
+<img width="1895" height="1238" alt="image" src="https://github.com/user-attachments/assets/1b75bdf4-83ad-4ef9-af1f-875f7580fe9a" />
+<img width="1914" height="1238" alt="image" src="https://github.com/user-attachments/assets/a8a26b4c-cfd1-43bb-9e5f-f282b579ae47" />
+
 ## Features
 
 - **Login System** - Simulated authentication with email/password
@@ -89,7 +94,3 @@ When a tutor clicks "Take Class", the UI updates immediately while the API call 
 ## Demo
 
 Use any email address to log in (demo mode - no real authentication).
-
-## License
-
-MIT
