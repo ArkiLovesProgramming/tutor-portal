@@ -2,8 +2,10 @@ import { useEffect } from 'react';
 import { DashboardLayout } from '../components/layouts/DashboardLayout';
 import { CalendarView } from '../components/dashboard/CalendarView';
 import { useStore } from '../store/useStore';
+import { useTranslation } from 'react-i18next';
 
 export function CalendarPage() {
+  const { t } = useTranslation();
   const { lessons, isLoading, error, fetchLessons, takeClass } = useStore();
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export function CalendarPage() {
             onClick={fetchLessons}
             className="px-4 py-2 bg-primary text-primary-foreground rounded-lg"
           >
-            Try Again
+            {t('common.retry')}
           </button>
         </div>
       </DashboardLayout>
@@ -38,9 +40,9 @@ export function CalendarPage() {
     <DashboardLayout>
       <div className="p-4 md:p-6 max-w-6xl mx-auto">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold">Calendar</h1>
+          <h1 className="text-2xl font-bold">{t('calendar.title')}</h1>
           <p className="text-muted-foreground">
-            View your teaching schedule in a monthly calendar view
+            {t('calendar.description')}
           </p>
         </div>
 

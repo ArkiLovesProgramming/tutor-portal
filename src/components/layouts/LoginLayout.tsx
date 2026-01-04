@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { cn } from '../../lib/utils';
 import type { ReactNode } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { LanguageSwitcher } from '../common/LanguageSwitcher';
 
 interface LoginLayoutProps {
   children: ReactNode;
@@ -43,28 +44,34 @@ export function LoginLayout({ children }: LoginLayoutProps) {
 
   return (
     <div className="h-screen bg-background flex items-center justify-center p-4 sm:p-6">
-      {/* Theme toggle button - top right */}
-      <button
-        onClick={toggleTheme}
-        className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2.5 rounded-lg bg-card border border-border hover:bg-accent transition-all duration-200 shadow-sm z-10"
-        aria-label="Toggle theme"
-      >
-        {isDark ? (
-          <Sun className="w-5 h-5 text-amber-400" />
-        ) : (
-          <Moon className="w-5 h-5" />
-        )}
-      </button>
+      {/* Top right controls */}
+      <div className="absolute top-5 right-5 sm:top-6 sm:right-6 flex items-center gap-2 z-10">
+        {/* Language switcher */}
+        <LanguageSwitcher />
+
+        {/* Theme toggle button */}
+        <button
+          onClick={toggleTheme}
+          className="p-2.5 rounded-lg bg-card border border-border hover:bg-accent transition-all duration-200 shadow-sm"
+          aria-label="Toggle theme"
+        >
+          {isDark ? (
+            <Sun className="w-5 h-5 text-amber-400" />
+          ) : (
+            <Moon className="w-5 h-5" />
+          )}
+        </button>
+      </div>
 
       {/* Content */}
       <div className="w-full max-w-[420px]">
         {/* Logo/Brand */}
         <div className="text-center mb-6">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-primary-foreground text-xl font-bold shadow-lg">
-            CC
+            TP
           </div>
-          <h1 className="text-xl font-bold text-foreground mt-3">Champ Code Academy</h1>
-          <p className="text-xs text-muted-foreground mt-1">Tutor Portal</p>
+          <h1 className="text-xl font-bold text-foreground mt-3">TutorPortal</h1>
+          <p className="text-xs text-muted-foreground mt-1">Teaching Management Platform</p>
         </div>
 
         {/* Login Card */}
@@ -76,7 +83,7 @@ export function LoginLayout({ children }: LoginLayoutProps) {
 
         {/* Footer */}
         <p className="text-center text-[11px] text-muted-foreground/60 mt-4">
-          © 2025 Champ Code Academy
+          © 2025 TutorPortal
         </p>
       </div>
     </div>

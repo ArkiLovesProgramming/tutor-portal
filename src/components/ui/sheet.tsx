@@ -33,6 +33,21 @@ function Sheet({ children, open, onOpenChange }: SheetProps) {
   const actualOpen = open !== undefined ? open : isOpen
   const actualOnOpenChange = onOpenChange || setIsOpen
 
+  React.useEffect(() => {
+    if (actualOpen) {
+      // Disable body scroll when sheet is open
+      document.body.style.overflow = 'hidden'
+    } else {
+      // Re-enable body scroll when sheet is closed
+      document.body.style.overflow = ''
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [actualOpen])
+
   return (
     <SheetContext.Provider value={{ open: actualOpen, onOpenChange: actualOnOpenChange }}>
       {children}
@@ -68,16 +83,16 @@ function SheetContent({ side = "right", children, className }: SheetContentProps
 
   return context.open ? (
     <>
-      {/* Backdrop */}
+      {/* Backdrop - covers everything including sidebar */}
       <div
-        className="fixed inset-0 bg-black/50 z-50 animate-in fade-in duration-200"
+        className="fixed inset-0 bg-black/50 z-[100] animate-in fade-in duration-200"
         onClick={() => context.onOpenChange(false)}
       />
 
       {/* Content */}
       <div
         className={cn(
-          "fixed z-50 bg-background shadow-xl border border-border",
+          "fixed z-[110] bg-background shadow-xl border border-border",
           "animate-in slide-in-from-edge duration-300",
           sideClasses[side],
           side === "left" && "translate-x-0",

@@ -10,10 +10,12 @@ import type { LessonType } from '../types';
 import { cn } from '../lib/utils';
 import { Loader2, RefreshCw } from 'lucide-react';
 import { parseISO, isWithinInterval } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
 type TabType = 'historic' | 'upcoming' | 'available';
 
 export function DashboardPage() {
+  const { t } = useTranslation();
   const {
     lessons,
     isLoading,
@@ -57,9 +59,9 @@ export function DashboardPage() {
   const availableLessons = getFilteredLessons('Available');
 
   const tabs: { id: TabType; label: string; count: number }[] = [
-    { id: 'historic', label: 'Historic', count: historicLessons.length },
-    { id: 'upcoming', label: 'Upcoming', count: upcomingLessons.length },
-    { id: 'available', label: 'Available', count: availableLessons.length },
+    { id: 'historic', label: t('dashboard.tabs.historic'), count: historicLessons.length },
+    { id: 'upcoming', label: t('dashboard.tabs.upcoming'), count: upcomingLessons.length },
+    { id: 'available', label: t('dashboard.tabs.available'), count: availableLessons.length },
   ];
 
   const handleTakeClass = async (lessonId: string) => {
@@ -80,7 +82,7 @@ export function DashboardPage() {
             className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg"
           >
             <RefreshCw className="w-4 h-4" />
-            Try Again
+            {t('common.retry')}
           </button>
         </div>
       </DashboardLayout>
@@ -93,9 +95,9 @@ export function DashboardPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold">Dashboard</h1>
+            <h1 className="text-2xl font-bold">{t('dashboard.title')}</h1>
             <p className="text-muted-foreground">
-              Manage your teaching schedule and available classes
+              {t('dashboard.description')}
             </p>
           </div>
 

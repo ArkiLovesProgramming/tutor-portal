@@ -26,7 +26,7 @@ export function TopBar() {
   };
 
   return (
-    <header className="h-16 border-b border-border bg-card px-4 md:px-6 flex items-center justify-between sticky top-0 z-40">
+    <header className="h-16 border-b border-border bg-card px-4 md:px-6 flex items-center justify-between fixed top-0 left-0 right-0 z-40">
       {/* Left section - Mobile menu + Search */}
       <div className="flex items-center gap-4">
         {/* Mobile menu trigger */}

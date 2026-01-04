@@ -25,11 +25,11 @@ export function Sidebar() {
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-6 border-b border-border">
         <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground font-bold">
-          CC
+          TP
         </div>
         <div className="hidden md:block">
-          <p className="font-semibold text-foreground">Champ Code</p>
-          <p className="text-xs text-muted-foreground">Academy</p>
+          <p className="font-semibold text-foreground">TutorPortal</p>
+          <p className="text-xs text-muted-foreground">Teaching Platform</p>
         </div>
       </div>
 
