@@ -10,7 +10,7 @@ import { useStore } from '../../store/useStore';
 
 const navItems = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/dashboard/calendar', icon: Calendar, label: 'Calendar' },
+  { path: '/calendar', icon: Calendar, label: 'Calendar' },
 ];
 
 export function Sidebar() {
