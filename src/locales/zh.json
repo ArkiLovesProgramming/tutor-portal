@@ -1,0 +1,95 @@
+{
+  "common": {
+    "dashboard": "仪表盘",
+    "calendar": "日历",
+    "login": "登录",
+    "logout": "退出",
+    "loading": "加载中...",
+    "error": "错误",
+    "retry": "重试",
+    "noData": "暂无数据",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确认",
+    "close": "关闭",
+    "clear": "清除",
+    "today": "今天",
+    "language": "语言"
+  },
+  "login": {
+    "title": "导师门户",
+    "subtitle": "冠军代码学院",
+    "description": "管理您的教学安排和可用课程",
+    "emailPlaceholder": "请输入邮箱",
+    "passwordPlaceholder": "请输入密码",
+    "signInButton": "登录",
+    "demoCredentials": "演示账号",
+    "demoEmail": "邮箱：tutor@champcode.com",
+    "demoPassword": "密码：demo123"
+  },
+  "dashboard": {
+    "title": "仪表盘",
+    "description": "管理您的教学安排和可用课程",
+    "todaysLessons": "今日课程",
+    "noTodaysLessons": "今天没有安排课程",
+    "filters": "筛选",
+    "dateRange": "日期范围",
+    "selectMonth": "选择月份",
+    "allMonths": "所有月份",
+    "allTime": "全部时间",
+    "tabs": {
+      "historic": "历史课程",
+      "upcoming": "即将到来",
+      "available": "可接课程"
+    },
+    "emptyStates": {
+      "historic": {
+        "title": "暂无历史课程",
+        "description": "您还没有完成任何课程"
+      },
+      "upcoming": {
+        "title": "暂无即将开始的课程",
+        "description": "您还没有安排任何课程"
+      },
+      "available": {
+        "title": "暂无可接课程",
+        "description": "目前没有可接的课程"
+      }
+    }
+  },
+  "calendar": {
+    "title": "日历",
+    "description": "以月历视图查看您的教学安排",
+    "lessonsScheduled": "{{count}} 节课程",
+    "lessonsScheduled_plural": "{{count}} 节课程",
+    "noLessonsForDay": "当天没有安排课程",
+    "clearSelection": "清除选择"
+  },
+  "lessonCard": {
+    "takeClass": "接课",
+    "confirming": "确认中...",
+    "viewDetails": "查看详情",
+    "status": {
+      "completed": "已完成",
+      "confirmed": "已确认",
+      "available": "可接",
+      "confirming": "确认中"
+    },
+    "type": {
+      "historic": "历史",
+      "upcoming": "即将到来",
+      "available": "可接"
+    }
+  },
+  "topBar": {
+    "welcome": "欢迎，{{name}}",
+    "tutorPortal": "导师门户"
+  },
+  "sidebar": {
+    "tutorPortalVersion": "导师门户 v{{version}}"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "chinese": "中文"
+  }
+}

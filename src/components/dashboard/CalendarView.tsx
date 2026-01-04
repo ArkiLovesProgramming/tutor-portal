@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { Lesson } from '../../types';
 import { LessonCard } from './LessonCard';
 import { useStore } from '../../store/useStore';
 import { cn } from '../../lib/utils';
 import { format, parseISO, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, isToday, addMonths, subMonths } from 'date-fns';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
+import { Sheet, SheetContent } from '../ui/sheet';
 
 interface CalendarViewProps {
   lessons: Lesson[];
@@ -12,6 +14,7 @@ interface CalendarViewProps {
 }
 
 export function CalendarView({ lessons, onTakeClass }: CalendarViewProps) {
+  const { t } = useTranslation();
   const { setSelectedMonth } = useStore();
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -49,6 +52,10 @@ export function CalendarView({ lessons, onTakeClass }: CalendarViewProps) {
     // Set the month filter to this day
     const monthIndex = day.getMonth();
     setSelectedMonth(monthIndex);
+  };
+
+  const handleSheetClose = () => {
+    setSelectedDate(null);
   };
 
   // Get lessons for selected date
@@ -167,39 +174,42 @@ export function CalendarView({ lessons, onTakeClass }: CalendarViewProps) {
         </div>
       </div>
 
-      {/* Selected Date Lessons */}
-      {selectedDate && (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="font-semibold text-lg">
-              {format(selectedDate, 'EEEE, MMMM d')}
-            </h3>
-            <button
-              onClick={() => setSelectedDate(null)}
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Clear selection
-            </button>
-          </div>
+      {/* Sheet for selected date details */}
+      <Sheet open={selectedDate !== null} onOpenChange={(open) => !open && handleSheetClose()}>
+        <SheetContent side="right" className="w-[400px] sm:w-[540px]">
+          <div className="p-6 space-y-6">
+            {/* Header */}
+            <div className="flex items-start justify-between">
+              <div>
+                <h2 className="text-xl font-semibold">
+                  {selectedDate && format(selectedDate, 'EEEE, MMMM d')}
+                </h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {t('calendar.lessonsScheduled', { count: selectedDateLessons.length })}
+                </p>
+              </div>
+            </div>
 
-          {selectedDateLessons.length > 0 ? (
-            <div className="space-y-3">
-              {selectedDateLessons.map(lesson => (
-                <LessonCard
-                  key={lesson.id}
-                  lesson={lesson}
-                  onTakeClass={onTakeClass}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-8 text-muted-foreground bg-card rounded-xl border border-border">
-              <CalendarIcon className="w-8 h-8 mx-auto mb-2 opacity-50" />
-              <p>No lessons scheduled for this day</p>
-            </div>
-          )}
-        </div>
-      )}
+            {/* Lessons list */}
+            {selectedDateLessons.length > 0 ? (
+              <div className="space-y-3">
+                {selectedDateLessons.map(lesson => (
+                  <LessonCard
+                    key={lesson.id}
+                    lesson={lesson}
+                    onTakeClass={onTakeClass}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <CalendarIcon className="w-12 h-12 mx-auto mb-3 text-muted-foreground opacity-50" />
+                <p className="text-muted-foreground">{t('calendar.noLessonsForDay')}</p>
+              </div>
+            )}
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }

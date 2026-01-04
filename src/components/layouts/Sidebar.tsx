@@ -1,5 +1,6 @@
 import { cn } from '../../lib/utils';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   LayoutDashboard,
   Calendar,
@@ -8,15 +9,16 @@ import {
 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 
-const navItems = [
-  { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/calendar', icon: Calendar, label: 'Calendar' },
-];
-
 export function Sidebar() {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const logout = useStore(state => state.logout);
+
+  const navItems = [
+    { path: '/dashboard', icon: LayoutDashboard, label: t('common.dashboard') },
+    { path: '/calendar', icon: Calendar, label: t('common.calendar') },
+  ];
 
   return (
     <div className="flex flex-col h-full">
@@ -61,7 +63,7 @@ export function Sidebar() {
         <div className="flex items-center gap-3 px-4 py-3 mb-2">
           <GraduationCap className="w-5 h-5 text-muted-foreground" />
           <span className="hidden md:block text-sm text-muted-foreground">
-            Tutor Portal v1.0
+            {t('sidebar.tutorPortalVersion', { version: '1.0' })}
           </span>
         </div>
         <button
@@ -69,7 +71,7 @@ export function Sidebar() {
           className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all duration-200"
         >
           <LogOut className="w-5 h-5" />
-          <span className="hidden md:block font-medium">Sign Out</span>
+          <span className="hidden md:block font-medium">{t('common.logout')}</span>
         </button>
       </div>
     </div>

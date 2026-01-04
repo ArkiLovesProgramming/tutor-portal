@@ -1,34 +1,82 @@
+import { useState, useEffect } from 'react';
 import { cn } from '../../lib/utils';
 import type { ReactNode } from 'react';
+import { Moon, Sun } from 'lucide-react';
 
 interface LoginLayoutProps {
   children: ReactNode;
 }
 
 export function LoginLayout({ children }: LoginLayoutProps) {
+  const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Check localStorage for saved theme preference
+    const stored = localStorage.getItem('theme');
+    const shouldBeDark = stored === 'dark';
+
+    setIsDark(shouldBeDark);
+    if (shouldBeDark) {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newDarkMode = !isDark;
+    setIsDark(newDarkMode);
+
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  // Avoid hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="w-full max-w-md px-6">
+    <div className="h-screen bg-background flex items-center justify-center p-4 sm:p-6">
+      {/* Theme toggle button - top right */}
+      <button
+        onClick={toggleTheme}
+        className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2.5 rounded-lg bg-card border border-border hover:bg-accent transition-all duration-200 shadow-sm z-10"
+        aria-label="Toggle theme"
+      >
+        {isDark ? (
+          <Sun className="w-5 h-5 text-amber-400" />
+        ) : (
+          <Moon className="w-5 h-5" />
+        )}
+      </button>
+
+      {/* Content */}
+      <div className="w-full max-w-[420px]">
         {/* Logo/Brand */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-primary-foreground text-2xl font-bold mb-4">
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-primary-foreground text-xl font-bold shadow-lg">
             CC
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Champ Code Academy</h1>
-          <p className="text-muted-foreground mt-2">Tutor Portal</p>
+          <h1 className="text-xl font-bold text-foreground mt-3">Champ Code Academy</h1>
+          <p className="text-xs text-muted-foreground mt-1">Tutor Portal</p>
         </div>
 
         {/* Login Card */}
         <div className={cn(
-          "bg-card rounded-xl shadow-lg border border-border p-6",
-          "animate-in fade-in slide-in-from-bottom-4 duration-500"
+          "bg-card rounded-xl shadow-lg border border-border p-6"
         )}>
           {children}
         </div>
 
         {/* Footer */}
-        <p className="text-center text-sm text-muted-foreground mt-6">
-          Use any email to login (demo mode)
+        <p className="text-center text-[11px] text-muted-foreground/60 mt-4">
+          © 2025 Champ Code Academy
         </p>
       </div>
     </div>

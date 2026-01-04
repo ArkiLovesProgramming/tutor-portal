@@ -14,6 +14,7 @@ import {
   SheetTrigger,
 } from '../ui/sheet';
 import { Sidebar } from './Sidebar';
+import { LanguageSwitcher } from '../common/LanguageSwitcher';
 
 export function TopBar() {
   const user = useStore(state => state.user);
@@ -70,6 +71,9 @@ export function TopBar() {
             <Moon className="w-5 h-5 text-muted-foreground" />
           )}
         </button>
+
+        {/* Language switcher */}
+        <LanguageSwitcher />
 
         {/* User menu */}
         <div className="flex items-center gap-3 ml-2">

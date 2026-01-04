@@ -1,0 +1,95 @@
+{
+  "common": {
+    "dashboard": "Dashboard",
+    "calendar": "Calendar",
+    "login": "Sign In",
+    "logout": "Sign Out",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "noData": "No data available",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "clear": "Clear",
+    "today": "Today",
+    "language": "Language"
+  },
+  "login": {
+    "title": "Tutor Portal",
+    "subtitle": "Champ Code Academy",
+    "description": "Manage your teaching schedule and available lessons",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "signInButton": "Sign In",
+    "demoCredentials": "Demo Credentials",
+    "demoEmail": "Email: tutor@champcode.com",
+    "demoPassword": "Password: demo123"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "Manage your teaching schedule and available lessons",
+    "todaysLessons": "Today's Lessons",
+    "noTodaysLessons": "No lessons scheduled for today",
+    "filters": "Filters",
+    "dateRange": "Date Range",
+    "selectMonth": "Select Month",
+    "allMonths": "All Months",
+    "allTime": "All Time",
+    "tabs": {
+      "historic": "Historic",
+      "upcoming": "Upcoming",
+      "available": "Available"
+    },
+    "emptyStates": {
+      "historic": {
+        "title": "No historic lessons",
+        "description": "You haven't completed any lessons yet"
+      },
+      "upcoming": {
+        "title": "No upcoming lessons",
+        "description": "You don't have any scheduled lessons"
+      },
+      "available": {
+        "title": "No available lessons",
+        "description": "There are no lessons available to pick up"
+      }
+    }
+  },
+  "calendar": {
+    "title": "Calendar",
+    "description": "View your teaching schedule in a monthly calendar view",
+    "lessonsScheduled": "{{count}} lesson scheduled",
+    "lessonsScheduled_plural": "{{count}} lessons scheduled",
+    "noLessonsForDay": "No lessons scheduled for this day",
+    "clearSelection": "Clear selection"
+  },
+  "lessonCard": {
+    "takeClass": "Take Class",
+    "confirming": "Confirming...",
+    "viewDetails": "View Details",
+    "status": {
+      "completed": "Completed",
+      "confirmed": "Confirmed",
+      "available": "Available",
+      "confirming": "Confirming"
+    },
+    "type": {
+      "historic": "Historic",
+      "upcoming": "Upcoming",
+      "available": "Available"
+    }
+  },
+  "topBar": {
+    "welcome": "Welcome, {{name}}",
+    "tutorPortal": "Tutor Portal"
+  },
+  "sidebar": {
+    "tutorPortalVersion": "Tutor Portal v{{version}}"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "chinese": "中文"
+  }
+}
