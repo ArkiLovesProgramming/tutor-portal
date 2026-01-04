@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { LoginPage } from './pages/LoginPage';
 import { DashboardPage } from './pages/DashboardPage';
+import { CalendarPage } from './pages/CalendarPage';
 import { useStore } from './store/useStore';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -23,6 +24,14 @@ function App() {
           element={
             <ProtectedRoute>
               <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/calendar"
+          element={
+            <ProtectedRoute>
+              <CalendarPage />
             </ProtectedRoute>
           }
         />
